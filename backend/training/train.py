@@ -39,7 +39,10 @@ def load_data(dataset_path):
             labels.append(int(row["label"]))
     return texts, np.array(labels)
 
-def train_all_models(dataset_path="c:/CSEN/project/fake-news-detection/backend/dataset/train.csv"):
+def train_all_models(dataset_path=None):
+    if dataset_path is None:
+        BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        dataset_path = os.path.join(BASE_DIR, "dataset", "train.csv")
     texts, y = load_data(dataset_path)
     print(f"[*] Loaded {len(texts)} samples from {dataset_path}")
     

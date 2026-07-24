@@ -1,5 +1,7 @@
 import os
 import sys
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.abspath(os.path.join(BASE_DIR, ".."))
 import json
 import csv
 import io
@@ -66,7 +68,7 @@ class PredictionResponse(BaseModel):
 @app.on_event("startup")
 def startup_event():
     global predictor
-    model_dir = "c:/CSEN/project/fake-news-detection/backend/model"
+    model_dir = os.path.join(BASE_DIR, "model")
     if not os.path.exists(os.path.join(model_dir, "model.pkl")):
         train_all_models()
     predictor = FakeNewsPredictor()
@@ -128,7 +130,7 @@ def get_prediction_history():
 
 @app.get("/download-report")
 def download_ieee_report():
-    report_path = "c:/CSEN/project/fake-news-detection/report/IEEE_Report.docx"
+    report_path = os.path.join(ROOT_DIR, "report", "IEEE_Report.docx")
     if not os.path.exists(report_path):
         create_ieee_report(report_path)
     return FileResponse(
@@ -139,7 +141,7 @@ def download_ieee_report():
 
 @app.get("/download-ppt")
 def download_ppt():
-    ppt_path = "c:/CSEN/project/fake-news-detection/report/PPT.pptx"
+    ppt_path = os.path.join(ROOT_DIR, "report", "PPT.pptx")
     if not os.path.exists(ppt_path):
         create_presentation(ppt_path)
     return FileResponse(
