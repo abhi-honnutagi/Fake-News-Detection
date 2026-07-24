@@ -7,7 +7,9 @@ if hasattr(sys.stdout, 'reconfigure'):
 import joblib
 import json
 
-def save_artifacts(model, vectorizer, metrics, model_dir="c:/CSEN/project/fake-news-detection/backend/model"):
+def save_artifacts(model, vectorizer, metrics, model_dir=None):
+    if model_dir is None:
+        model_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "model")
     os.makedirs(model_dir, exist_ok=True)
     
     model_path = os.path.join(model_dir, "model.pkl")
@@ -24,7 +26,9 @@ def save_artifacts(model, vectorizer, metrics, model_dir="c:/CSEN/project/fake-n
     print(f"[OK] Saved vectorizer to {vectorizer_path}")
     print(f"[OK] Saved metrics to {metrics_path}")
 
-def load_artifacts(model_dir="c:/CSEN/project/fake-news-detection/backend/model"):
+def load_artifacts(model_dir=None):
+    if model_dir is None:
+        model_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "model")
     model_path = os.path.join(model_dir, "model.pkl")
     vectorizer_path = os.path.join(model_dir, "vectorizer.pkl")
     metrics_path = os.path.join(model_dir, "metrics.json")

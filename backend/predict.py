@@ -9,7 +9,9 @@ from training.preprocessing import clean_text
 from training.save_model import load_artifacts
 
 class FakeNewsPredictor:
-    def __init__(self, model_dir="c:/CSEN/project/fake-news-detection/backend/model"):
+    def __init__(self, model_dir=None):
+        if model_dir is None:
+            model_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "model")
         self.model_dir = model_dir
         self.model, self.vectorizer, self.metrics = load_artifacts(model_dir)
         self.feature_names = np.array(self.vectorizer.get_feature_names_out())
