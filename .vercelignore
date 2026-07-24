@@ -1,0 +1,7 @@
+# Ignore unnecessary directories for the Serverless Function build to reduce size
+frontend/
+backend/dataset/
+backend/training/
+.git/
+.vscode/
+README.md
