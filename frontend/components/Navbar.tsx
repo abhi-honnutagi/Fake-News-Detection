@@ -9,12 +9,12 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 text-xs">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-3 cursor-pointer">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center shadow-md shadow-blue-500/20">
-            <ShieldCheck className="w-5 h-5 text-white" />
+          <div className="w-9 h-9 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center shadow-md">
+            <ShieldCheck className="w-5 h-5 text-zinc-300" />
           </div>
           <div>
             <span className="text-base font-bold text-white tracking-tight flex items-center gap-2">
-              ShieldNet <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">Enterprise AI</span>
+              AI Credibility Engine
             </span>
           </div>
         </Link>
